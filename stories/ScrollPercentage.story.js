@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import ScrollPercentage from '../src/index'
 import ScrollWrapper from './ScrollWrapper'
+import ScrollHorizontal from './ScrollHorizontal'
 
 const calcPercentage = percentage => Math.floor(percentage * 100)
 
@@ -28,7 +29,39 @@ const Header = props => (
   </div>
 )
 
+const HeaderHorizontal = props => (
+  <div
+    style={{
+      display: 'flex',
+      minWidth: '200vw',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      textAlign: 'center',
+      background: 'lightcoral',
+      color: 'azure',
+      ...props.style,
+    }}
+  >
+    {props.threshold ? (
+      <h2 style={{ marginTop: 0 }}>{`Threshold: ${props.threshold}%`}</h2>
+    ) : null}
+    <h3 style={{ marginBottom: 0 }}>{props.children}</h3>
+  </div>
+)
+
 storiesOf('Scroll Percentage', module)
+  .add('Scroll horizontal', () => (
+    <ScrollHorizontal>
+      <ScrollPercentage horizontal>
+        {percentage => (
+          <HeaderHorizontal>{`Percentage scrolled: ${calcPercentage(
+            percentage,
+          )}%.`}</HeaderHorizontal>
+        )}
+      </ScrollPercentage>
+    </ScrollHorizontal>
+  ))
   .add('Child as function', () => (
     <ScrollWrapper>
       <ScrollPercentage>
