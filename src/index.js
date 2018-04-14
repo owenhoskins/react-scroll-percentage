@@ -144,7 +144,6 @@ class ScrollPercentage extends React.PureComponent<Props, State> {
 
     let percentage
     if (this.props.horizontal) {
-      console.log('I am horizontal! ', this.props.horizontal)
       percentage = ScrollPercentage.calculatePercentageOfWidth(
         bounds,
         threshold,
