@@ -57,8 +57,6 @@ class ScrollPercentage extends React.PureComponent<Props, State> {
     const offsetTop = threshold * vh * 0.25
     const offsetBottom = threshold * vh * 0.25
 
-    debugger
-
     return (
       1 -
       Math.max(
